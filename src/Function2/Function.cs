@@ -13,7 +13,7 @@ namespace Function2
         {
             log.Info($"Function2 HttpTrigger was triggered!");
 
-            var appKey = "FooKey";
+            var appKey = "FUNCTIONS_EXTENSION_VERSION";
             var appValue = Environment.GetEnvironmentVariable(appKey);
             log.Info($"App Setting. Key : {appKey}, Value : {appValue}");
 
