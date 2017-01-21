@@ -11,7 +11,7 @@ using Xunit;
 namespace Function2.Tests
 {
     /// <summary>
-    /// This represents the test entity for the <see cref="Class"/> class.
+    /// This represents the test entity for the <see cref="Function"/> class.
     /// </summary>
     public class FunctionTest
     {
@@ -34,7 +34,7 @@ namespace Function2.Tests
             var log = new TraceMonitor();
 
             // Act
-            var result = await Class.Run(req, log).ConfigureAwait(false);
+            var result = await Function.Run(req, log).ConfigureAwait(false);
 
             // Assert
             dynamic json = JsonConvert.DeserializeObject(jsonContent);

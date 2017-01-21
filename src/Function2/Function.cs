@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Function2
 {
-    public class Class
+    public class Function
     {
         public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
         {

@@ -1,6 +1,6 @@
 {
-  "scriptFile": "PreCompileEnvironmentVariables.dll",
-  "entryPoint": "PreCompileEnvironmentVariables.MyFunction.Run",
+  "scriptFile": "Function2.dll",
+  "entryPoint": "Function2.Function.Run",
   "bindings": [
     {
       "webHookType": "genericJson",
