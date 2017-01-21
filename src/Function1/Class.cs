@@ -3,7 +3,6 @@ using System.Net;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
-using System.Net.Http.Formatting;
 using Microsoft.Azure.WebJobs.Host;
 
 namespace Function1
