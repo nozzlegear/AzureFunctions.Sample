@@ -12,6 +12,8 @@ namespace Function1
     {
         public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
         {
+            log.Info($"Function1 HttpTrigger was triggered!");
+
             // parse query parameter
             var name = req.GetQueryNameValuePairs()
                 .FirstOrDefault(q => string.Compare(q.Key, "name", StringComparison.OrdinalIgnoreCase) == 0)

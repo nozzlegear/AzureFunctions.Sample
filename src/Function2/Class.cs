@@ -13,7 +13,7 @@ namespace Function2
     {
         public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
         {
-            log.Info($"Webhook was triggered!");
+            log.Info($"Function2 HttpTrigger was triggered!");
 
             var appKey = "FooKey";
             var appValue = Environment.GetEnvironmentVariable(appKey);
