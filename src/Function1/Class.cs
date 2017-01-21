@@ -8,7 +8,7 @@ using Microsoft.Azure.WebJobs.Host;
 
 namespace Function1
 {
-    public class Class1
+    public class Class
     {
         public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
         {
