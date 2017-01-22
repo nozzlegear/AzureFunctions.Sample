@@ -127,7 +127,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FunctionTest.cs" />
+    <Compile Include="Function1Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
