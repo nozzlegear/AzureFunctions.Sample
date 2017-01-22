@@ -53,7 +53,7 @@ IF NOT DEFINED KUDU_SYNC_CMD (
 :: -----
 
 IF NOT DEFINED PRECOMPILE_TEMP (
-  SET PRECOMPILE_TEMP=%temp%\___precompileTemp%random%
+  SET PRECOMPILE_TEMP=___precompileTemp%random%
   SET CLEAN_LOCAL_PRECOMPILE_TEMP=true
 )
 
@@ -75,7 +75,8 @@ FOR /F %%d in ('DIR "*.sln" /S /B') DO (
 :: MSBuild
 echo "MSBuild solution"
 FOR /F %%d in ('DIR "*.sln" /S /B') DO ( 
-  call msbuild.exe %%d /p:Configuration=Release,OutputPath=%PRECOMPILE_TEMP%
+  call :GetFileName result %%d
+  call msbuild.exe %%d /p:Configuration=Release,OutputPath=%PRECOMPILE_TEMP%\%%d
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
@@ -86,7 +87,7 @@ FOR /F %%d in ('DIR "*.sln" /S /B') DO (
 :: NuGet package restore
 echo "Restoring function packages"
 
-FOR /F %%d in ('DIR "Project.json" /S /B') DO ( 
+FOR /F %%d in ('DIR "Project.json" /S /B') DO (
   call nuget restore %%d -PackagesDirectory %home%\data\Functions\packages\nuget
 )
 
@@ -100,6 +101,20 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 goto end
+
+:: Helper routine to retrieve file from path 
+:GetFileName
+(
+    set "%~1=%~n2"
+    exit /b
+)
+
+:GetFileNameAndExtensions
+(
+    set "%~1=%~nx2"
+    exit /b
+)
+
 
 :: Execute command routine that will echo out when error
 :ExecuteCmd
