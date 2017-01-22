@@ -61,7 +61,7 @@ FOR /F %%d in ('DIR "*.sln" /S /B') DO (
 :: MSBuild
 echo "MSBuild solution"
 FOR /F %%d in ('DIR "*.sln" /S /B') DO ( 
-  call msbuild.exe %%d /p:Configuration=Release
+  call msbuild.exe %%d /p:Configuration=Release;OutputPath=bin
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
