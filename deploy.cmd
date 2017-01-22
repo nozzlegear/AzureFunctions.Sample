@@ -49,6 +49,20 @@ IF NOT DEFINED KUDU_SYNC_CMD (
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: Prepare Precompile Function
+:: -----
+
+IF NOT DEFINED PRECOMPILE_TEMP (
+  SET PRECOMPILE_TEMP=%temp%\___precompileTemp%random%
+  SET CLEAN_LOCAL_PRECOMPILE_TEMP=true
+)
+
+IF DEFINED CLEAN_LOCAL_DEPLOYMENT_TEMP (
+  IF EXIST "%DEPLOYMENT_TEMP%" rd /s /q "%DEPLOYMENT_TEMP%"
+  mkdir "%DEPLOYMENT_TEMP%"
+)
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Build
 :: -----
 
@@ -61,7 +75,7 @@ FOR /F %%d in ('DIR "*.sln" /S /B') DO (
 :: MSBuild
 echo "MSBuild solution"
 FOR /F %%d in ('DIR "*.sln" /S /B') DO ( 
-  call msbuild.exe %%d /p:Configuration=Release
+  call msbuild.exe %%d /p:Configuration=Release,OutputPath=%PRECOMPILE_TEMP%
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
@@ -80,7 +94,7 @@ echo Handling Basic Web Site deployment.
 
 :: KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
-  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd;Project.json"
+  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%PRECOMPILE_TEMP%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd;Project.json"
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
