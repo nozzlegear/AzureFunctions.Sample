@@ -60,8 +60,8 @@ FOR /F %%d in ('DIR "*.sln" /S /B') DO (
 
 :: MSBuild
 echo "MSBuild solution"
-DIR "*.csproj" /S /B | FOR /F %%d in ('FIND /V /I "Tests"') DO ( 
-  call msbuild.exe %%d /p:Configuration=Release,OutputPath=out
+FOR /F %%d in ('DIR "*.sln" /S /B') DO ( 
+  call msbuild.exe %%d /p:Configuration=Release
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
