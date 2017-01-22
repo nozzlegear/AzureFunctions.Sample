@@ -7,7 +7,7 @@ using System.Net.Http;
 using Microsoft.Azure.WebJobs.Host;
 using Function1;
 
-public static HttpResponseMessage Run(HttpRequestMessage req, TraceWriter log)
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 {
-    return Function1.Function1.Run(req, log).Result;
+    return await Function1.Function1.Run(req, log);
 }
