@@ -9,5 +9,5 @@ using Function1;
 
 public static HttpResponseMessage Run(HttpRequestMessage req, TraceWriter log)
 {
-    return Function1.Function1.Run(req, log);
+    return Function1.Function1.Run(req, log).Result;
 }
