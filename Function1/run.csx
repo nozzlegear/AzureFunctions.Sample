@@ -9,5 +9,5 @@ using Function;
 
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 {
-    Function.run(req, log);
+    Function1.run(req, log);
 }
