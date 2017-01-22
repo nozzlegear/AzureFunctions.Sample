@@ -1,4 +1,4 @@
-#r "bin\Release\Function.dll"
+#r ".\bin\Release\Function.dll"
 using System;
 using System.Net;
 using System.Linq;
