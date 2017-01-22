@@ -76,7 +76,7 @@ FOR /F %%d in ('DIR "*.sln" /S /B') DO (
 echo "MSBuild solution"
 FOR /F %%d in ('DIR "*.sln" /S /B') DO ( 
   call :GetFileName result %%d
-  call msbuild.exe %%d /p:Configuration=Release,OutputPath=%PRECOMPILE_TEMP%\%%d
+  call msbuild.exe %%d /p:Configuration=Release,OutputPath=%PRECOMPILE_TEMP%\%result%
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
