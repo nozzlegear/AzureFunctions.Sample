@@ -42,6 +42,7 @@ The only thing that I know works is Function1.
 *Deploy to azure function with GIT and it will build. Then you can use the portal to test.*  
 
 Over the next week or two, need to:
+* Actually add a shared assembly and reference it to prove it works
 * Look at Function2 and make it work (might already be)
 * Look at the Unit Tests and make them work (might already be)
 * Add working integration test and try the integrated debugging
