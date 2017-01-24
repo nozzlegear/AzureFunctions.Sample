@@ -9,9 +9,6 @@
 * Support Nuget download for scripts and assemblies
 * Never manually deploy a binary
 
-#### Project Structure
-![alt text](screenshots/Azure Function - Project Structure.png "A "Typical" .NET Project Structure")
-
 #### Motivation
 The practical motivation is that the current recommended options surrounding dynamic compilation, shared libraries and pre-compiled binaries are not elegant. 
 
@@ -49,3 +46,6 @@ Over the next week or two, need to:
 * Look at the Unit Tests and make them work (might already be)
 * Add working integration test and try the integrated debugging
   
+#### Project Structure
+![alt text](screenshots/Azure Function - Project Structure.png "A "Typical" .NET Project Structure")
+
