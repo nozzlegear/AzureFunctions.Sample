@@ -1,5 +1,5 @@
 {
-  "scriptFile": "Function2.dll",
+  "scriptFile": "bin/Release/Function.dll",
   "entryPoint": "Function2.Function.Run",
   "bindings": [
     {

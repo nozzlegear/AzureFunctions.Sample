@@ -10,9 +10,9 @@ using Xunit;
 namespace Function1.Tests
 {
     /// <summary>
-    /// This represents the test entity for the <see cref="Function"/> class.
+    /// This represents the test entity for the <see cref="Function1"/> class.
     /// </summary>
-    public class FunctionTest
+    public class Function1Test
     {
         [Theory]
         [InlineData("Success Story")]
@@ -30,7 +30,7 @@ namespace Function1.Tests
             var log = new TraceMonitor();
 
             // Act
-            var result = await Function.Run(req, log).ConfigureAwait(false);
+            var result = await Function1.Run(req, log).ConfigureAwait(false);
 
             // Assert
             var content = await result.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -52,7 +52,7 @@ namespace Function1.Tests
             var log = new TraceMonitor();
 
             // Act
-            var result = await Function.Run(req, log).ConfigureAwait(false);
+            var result = await Function1.Run(req, log).ConfigureAwait(false);
 
             // Assert
             var content = await result.Content.ReadAsStringAsync().ConfigureAwait(false);
