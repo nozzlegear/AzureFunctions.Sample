@@ -49,36 +49,22 @@ IF NOT DEFINED KUDU_SYNC_CMD (
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: Build
-:: -----
-
-:: NuGet package restore
-echo "Restoring solution packages"
-FOR /F %%d in ('DIR "*.sln" /S /B') DO ( 
-  call nuget restore %%d
-)
-
-:: MSBuild
-echo "MSBuild solution"
-FOR /F %%d in ('DIR "*.sln" /S /B') DO ( 
-  call msbuild.exe %%d /p:Configuration=Release
-  IF !ERRORLEVEL! NEQ 0 goto error
-)
-
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :: Deployment
 :: ----------
 
 :: NuGet package restore
 echo "Restoring function packages"
 
-FOR /F %%d in ('DIR "Project.json" /S /B') DO ( 
-  call nuget restore %%d -PackagesDirectory %home%\data\Functions\packages\nuget
-)
+dotnet restore
 
-echo Handling Basic Web Site deployment.
+:: Build projects
+echo "Building projects"
+
+dotnet build -c Release
 
 :: KuduSync
+echo Handling Basic Web Site deployment.
+
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd;Project.json"
   IF !ERRORLEVEL! NEQ 0 goto error
