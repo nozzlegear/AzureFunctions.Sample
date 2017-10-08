@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Library.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="microsoft.azure.webjobs" Version="3.0.0-beta3" />
+    <PackageReference Include="microsoft.azure.webjobs.extensions" Version="3.0.0-beta3" />
+  </ItemGroup>
+</Project> 
