@@ -12,13 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function1.Tests", "Function1.Tests\Function1.Tests.csproj", "{772BF044-1A65-4DDF-8D5A-6C143C491B32}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function1", "Function1\Function1.csproj", "{DAE8EDA2-1235-4385-ADBF-6D3AC161F31F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function2", "Function2\Function2.csproj", "{AAA00FA6-044A-4DB4-8336-026014C9BF86}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function2.Tests", "Function2.Tests\Function2.Tests.csproj", "{38309EEC-6D20-4CEA-8ED2-6D1391814B0F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Function3", "Function3\Function3.csproj", "{2892F6A0-B2AA-4510-8C82-65C270BF7B89}"
 EndProject
