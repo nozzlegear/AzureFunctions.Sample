@@ -1,0 +1,13 @@
+{
+    "scriptFile": ".\\bin\\Release\\netstandard2.0\\Function3.dll",
+    "entryPoint": "Function3.Function.Run",
+    "bindings": [
+        {
+            "name": "myTimer",
+            "type": "timerTrigger",
+            "direction": "in",
+            "schedule": "0 0 12 * * 1"
+        }
+    ],
+    "disabled": false
+}
